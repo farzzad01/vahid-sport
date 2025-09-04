@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Neon Automotive Design System - Deep Black & Neon Red Theme
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core Theme - Deep Black Background */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    /* Cards & Surfaces */
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Neon Red Primary */
+    --primary: 348 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 348 100% 65%;
+
+    /* Secondary - Dark Gray */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted Elements */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent - Lighter Red */
+    --accent: 348 100% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 0 0% 25%;
+    --input: 0 0% 18%;
+    --ring: 348 100% 50%;
+
+    /* Border Radius */
+    --radius: 0.75rem;
+
+    /* Neon Effects */
+    --neon-red: 348 100% 50%;
+    --neon-glow: 348 100% 65%;
+    --glass-bg: 0 0% 8% / 0.8;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(348 100% 50%), hsl(348 100% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 5%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 12%), hsl(0 0% 8%));
+
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 30px hsl(348 100% 50% / 0.5);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.3);
+    --glow-intense: 0 0 50px hsl(348 100% 50% / 0.8);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark mode inherits the same neon theme */
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 348 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 348 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-dark);
+  }
+
+  /* Neon glow effects */
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border));
+  }
+}
+
+@layer components {
+  /* Enhanced Neon button variants */
+  .btn-neon {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply transition-all duration-300 ease-out;
+    @apply shadow-lg hover:shadow-neon;
+    @apply border border-primary/50;
+    @apply relative overflow-hidden;
+    @apply transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-neon::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply translate-x-[-100%] hover:translate-x-[100%];
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .btn-ghost-neon {
+    @apply bg-transparent text-primary border border-primary;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transition-all duration-300 ease-out;
+    @apply relative overflow-hidden;
+    @apply transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-ghost-neon::before {
+    content: '';
+    @apply absolute inset-0 bg-primary/10;
+    @apply scale-0 hover:scale-100;
+    @apply transition-transform duration-300 ease-out;
+    @apply rounded-lg;
+  }
+
+  /* Enhanced Card effects */
+  .card-neon {
+    @apply bg-card border border-border rounded-lg;
+    @apply shadow-card hover:shadow-neon;
+    @apply transition-all duration-500 ease-out;
+    @apply relative overflow-hidden;
+    @apply transform hover:scale-[1.02] hover:-translate-y-1;
+  }
+  
+  .card-neon::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[1px];
+    @apply bg-gradient-to-r from-transparent via-primary to-transparent;
+    @apply opacity-0 hover:opacity-100;
+    @apply transition-opacity duration-500;
+  }
+
+  /* Enhanced Text effects */
+  .heading-neon {
+    @apply text-4xl md:text-6xl font-bold;
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    text-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+  
+  /* Modern Glass morphism */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Floating animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Pulse glow effect */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  /* Modern form inputs */
+  .modern-input {
+    @apply bg-background/50 border border-border rounded-lg;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/20;
+    @apply transition-all duration-300;
+    @apply backdrop-blur-sm;
+  }
+  
+  .modern-input:focus {
+    box-shadow: 0 0 0 1px hsl(var(--primary)), 0 0 20px hsl(var(--primary) / 0.2);
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Modern scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}

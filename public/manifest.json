@@ -1,0 +1,27 @@
+{
+  "name": "اسپرت وحید - مرکز تخصصی شیشه دودی",
+  "short_name": "اسپرت وحید",
+  "description": "مرکز تخصصی نصب شیشه دودی و لوازم جانبی لوکس خودرو در قم",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#141414",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["automotive", "business"],
+  "lang": "fa",
+  "dir": "rtl"
+}
